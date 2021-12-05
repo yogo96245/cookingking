@@ -22,6 +22,7 @@ public class charControl : MonoBehaviour {
 //      Debug.Log("按鍵數值= " + move);
       myAnimator.SetFloat("Speed", Mathf.Abs(move));
       myRigid.velocity = new Vector2 (move * speedScale, myRigid.velocity.y);
+      Debug.Log("velocity = " + myRigid.velocity);
       if (move > 0 && facingRight != true) {
         //條件成立時的反應：圖片轉向
         Flip();
