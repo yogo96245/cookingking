@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class charControl : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class charControl : MonoBehaviour {
   Rigidbody2D  myRigid; 
   bool facingRight;
   public float speedScale;
+  //public GameObject a;
 
   // Start is called before the first frame update
   void Start()     {
@@ -18,20 +20,22 @@ public class charControl : MonoBehaviour {
 
   // Update is called once per frame
   void Update() {
-      float move = Input.GetAxis("Horizontal");
-//      Debug.Log("按鍵數值= " + move);
-      myAnimator.SetFloat("Speed", Mathf.Abs(move));
-      myRigid.velocity = new Vector2 (move * speedScale, myRigid.velocity.y);
-      Debug.Log ("move = " + move + ", speed = " + speedScale);
-//      Debug.Log ("velocity = " + myRigid.velocity);
+      float horizontal_move = Input.GetAxis("Horizontal");
+      float vertical_move = Input.GetAxis("Vertical");
+      myAnimator.SetFloat("vertical_speed", vertical_move);
+      myAnimator.SetFloat("horizontal_speed", Mathf.Abs(horizontal_move));
+      myRigid.velocity = new Vector2 (horizontal_move * speedScale, myRigid.velocity.y);
 
-      if (move > 0 && facingRight != true) {
+      if (horizontal_move > 0 && facingRight != true) {
         //條件成立時的反應：圖片轉向
         Flip();
       }
-      else if (move < 0 && facingRight == true) {
+      else if (horizontal_move < 0 && facingRight == true) {
         //圖片轉向
         Flip();
+      }
+      if (Input.GetKeyDown(KeyCode.Z)) {
+        //myAnimator.GetComponent<Animator>().Animator = a  ;
       }
       
   }
