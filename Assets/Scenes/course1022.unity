@@ -1251,15 +1251,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 728988700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097b551f2844b054290f18a39bf892e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 621b61e0eb85b6e459a132d951028afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Solvers:
-  - {fileID: 663915173}
-  m_Weight: 1
-  m_SolverEditorData:
-  - color: {r: 0, g: 1, b: 0, a: 1}
-    showGizmo: 1
+  cut_menu: {fileID: 799916041}
 --- !u!114 &728988704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,19 +1308,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 40}
   m_Size: {x: 50, y: 85}
   m_Direction: 0
---- !u!114 &728988707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 728988700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7928ea5da95c9804db3200457d990ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cut_menu: {fileID: 799916041}
 --- !u!1 &749275284 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 773679088558064488, guid: 44495bde7a011274bb72b10d3d831327,
@@ -1413,7 +1395,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 749275284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7928ea5da95c9804db3200457d990ea6, type: 3}
+  m_Script: {fileID: 11500000, guid: 621b61e0eb85b6e459a132d951028afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cut_menu: {fileID: 799916041}
@@ -2104,7 +2086,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 833116920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7928ea5da95c9804db3200457d990ea6, type: 3}
+  m_Script: {fileID: 11500000, guid: 621b61e0eb85b6e459a132d951028afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cut_menu: {fileID: 799916041}
@@ -2934,7 +2916,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1566588132
 SpriteRenderer:
@@ -2996,7 +2978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566588130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.39, y: -5.55, z: 0}
+  m_LocalPosition: {x: -18.39, y: -5.5, z: 0}
   m_LocalScale: {x: 4.4069, y: 1.1975, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

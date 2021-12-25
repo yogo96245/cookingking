@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class chef_collision : MonoBehaviour {
   public  GameObject cut_menu;
+
   // Start is called before the first frame update
-   void Start() {
-       
+  void Start() {
+    Cursor.visible = false;     
   }
 
   // Update is called once per frame

@@ -36,8 +36,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\chef_collision.cs" />
      <Compile Include="Assets\Scripts\curser_follow.cs" />
+     <Compile Include="Assets\Scripts\chef_collision.cs" />
      <Compile Include="Assets\Scripts\charControl.cs" />
      <Compile Include="Assets\Scripts\cut_food.cs" />
     <Reference Include="UnityEngine">
