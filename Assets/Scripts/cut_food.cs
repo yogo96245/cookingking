@@ -4,75 +4,93 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class cut_food : MonoBehaviour {
-  public GameObject line1;
-  public GameObject line2;
-  public GameObject line3;
-  public GameObject line4;
   public GameObject food;
   private bool is_sleep = false;
   private Vector2 mouse_position;
+  private int flag=0,begin_position=0,end_position=0;
+  public GameObject[] lines_group;
+
   // Start is called before the first frame update
   void Start() {
-    
+   
   }
 
   // Update is called once per frame
+
+  /*-----------------------------------------------------------------------------------------------*/
   void Update() {
+
+
     mouse_click();
     line_color_change();
 
-    if (line1.activeSelf && line2.activeSelf && line3.activeSelf && line4.activeSelf) {
+    if (lines_group[0].activeSelf && lines_group[1].activeSelf && lines_group[2].activeSelf && lines_group[3].activeSelf) {
       food.GetComponent<Image>().sprite =  Resources.Load <Sprite>("cut_after");
       if (!is_sleep) {
         StartCoroutine (complete());
       }
     }
   }
-  public void line1_show() {
-    line1.SetActive(true);
-  }
-  public void line2_show() {
-    line2.SetActive(true);
-  }
-  public void line3_show() {
-    line3.SetActive(true);
-  }
-  public void line4_show() {
-    line4.SetActive(true);
-  }
+
+  /*-----------------------------------------------------------------------------------------------*/
+
   IEnumerator complete() {
     is_sleep = true;
-    line1.SetActive(false);
-    line2.SetActive(false);
-    line3.SetActive(false);
-    line4.SetActive(false);
+    for(int i=0;i<lines_group.Length;i++){
+      lines_group[i].SetActive(false);
+    }
     yield return new WaitForSeconds(3);
     this.gameObject.SetActive (false);
     is_sleep = false;
   }
 
+  /*-----------------------------------------------------------------------------------------------*/
+
   public void mouse_click(){
     if (Input.GetMouseButtonDown(0)){
-      mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-      Debug.Log(mouse_position.x + " " + mouse_position.y);
+      switch(flag){
+        case 0 : begin_position = cursor_ch(-17.3f,3.3f);break;
+        case 1 : begin_position = cursor_ch(-13.3f,3.3f);break;
+        case 2 : begin_position = cursor_ch(-9.3f,3.3f);break;
+        case 3 : begin_position = cursor_ch(-19.9f,0.0f);break;
+      }
+
+      Debug.Log("pos is : " + mouse_position.x + "  " + mouse_position.y);
+      Debug.Log("b is : " + begin_position);
     }
-    else if (Input.GetMouseButtonUp(0)){
-      mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-      Debug.Log(mouse_position.x + " " + mouse_position.y);
+
+    if (Input.GetMouseButtonUp(0)){
+      switch(flag){
+        case 0 : end_position = cursor_ch(-17.3f,-3.3f);break;
+        case 1 : end_position = cursor_ch(-13.3f,-3.3f);break;
+        case 2 : end_position = cursor_ch(-9.3f,-3.3f);break;
+        case 3 : end_position = cursor_ch(-6.67f,0.0f);break;
+      }
+
+      Debug.Log("pos is : " + mouse_position.x + "  " + mouse_position.y);
+      Debug.Log("e is : " + end_position);
     }
-    else{
-      //
+
+    if(begin_position + end_position == 2) {
+      lines_group[flag++].SetActive(false);
+      lines_group[flag].SetActive(true);
+      begin_position=0;
+      end_position=0;
     }
+
   }
+
+  /*-----------------------------------------------------------------------------------------------*/
 
   public void line_color_change(){
-    line1.GetComponent<Image>().color =  Color.Lerp( new Color32(255,13,13,100), new Color32(255,13,13,20), Mathf.PingPong(Time.time, 1));
-    line2.GetComponent<Image>().color =  Color.Lerp( new Color32(255,13,13,100), new Color32(255,13,13,20), Mathf.PingPong(Time.time, 1));
-    line3.GetComponent<Image>().color =  Color.Lerp( new Color32(255,13,13,100), new Color32(255,13,13,20), Mathf.PingPong(Time.time, 1));
-    line4.GetComponent<Image>().color =  Color.Lerp( new Color32(255,13,13,100), new Color32(255,13,13,20), Mathf.PingPong(Time.time, 1));
+    for(int i=0;i<lines_group.Length;i++)
+      lines_group[i].GetComponent<Image>().color =  Color.Lerp( new Color32(255,13,13,100), new Color32(255,13,13,20), Mathf.PingPong(Time.time, 1));
   }
 
-  public void begin_pos(){
-    
+  /*-----------------------------------------------------------------------------------------------*/
+
+  private int cursor_ch(float x , float y){
+    mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    return ((Mathf.Abs(mouse_position.x - x)<0.3)&&(Mathf.Abs(mouse_position.y-y)<0.3))?1:0;
   }
 }

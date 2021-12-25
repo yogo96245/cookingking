@@ -14,13 +14,13 @@ public class chef_collision : MonoBehaviour {
   void Update() {
     
   }
-  void OnCollisionEnter2D(Collision2D collision) {
+  void OnTriggerEnter2D(Collider2D collision) {
     if (collision.gameObject.tag == "cut_area" && Input.GetKeyDown (KeyCode.Space)) {
       Debug.Log ("enter");
       cut_menu.SetActive(true);
     }
   }
-  void OnCollisionStay2D(Collision2D collision) {
+  void OnTriggerStay2D(Collider2D collision) {
     if (collision.gameObject.tag == "cut_area" && Input.GetKeyDown (KeyCode.Space)) {
       Debug.Log ("stay");
       cut_menu.SetActive(true);

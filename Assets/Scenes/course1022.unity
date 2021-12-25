@@ -1289,7 +1289,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!70 &728988706
@@ -1383,7 +1383,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &749275290
@@ -1994,11 +1994,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102b114069cd52343be8367842a62f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  line1: {fileID: 947101765}
-  line2: {fileID: 2005400150}
-  line3: {fileID: 1610588987}
-  line4: {fileID: 462364133}
   food: {fileID: 617603804}
+  lines_group:
+  - {fileID: 947101765}
+  - {fileID: 2005400150}
+  - {fileID: 1610588987}
+  - {fileID: 462364133}
 --- !u!1 &833116920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8218149832365124243, guid: d2f22a049dd0e8f43bc6ad635ed477c3,
@@ -2074,7 +2075,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &833116926
@@ -2107,7 +2108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &947101766
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2885,6 +2886,7 @@ GameObject:
   - component: {fileID: 1566588133}
   - component: {fileID: 1566588132}
   - component: {fileID: 1566588131}
+  - component: {fileID: 1566588134}
   m_Layer: 0
   m_Name: cut
   m_TagString: cut_area
@@ -2984,6 +2986,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1566588134
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566588130}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &1610588987
 GameObject:
   m_ObjectHideFlags: 0
