@@ -7,7 +7,7 @@ public class chef_collision : MonoBehaviour {
 
   // Start is called before the first frame update
   void Start() {
-    Cursor.visible = false;     
+         
   }
 
   // Update is called once per frame
@@ -15,14 +15,14 @@ public class chef_collision : MonoBehaviour {
     
   }
   void OnTriggerEnter2D(Collider2D collision) {
+    Debug.Log ("enter");
     if (collision.gameObject.tag == "cut_area" && Input.GetKeyDown (KeyCode.Space)) {
-      Debug.Log ("enter");
       cut_menu.SetActive(true);
     }
   }
   void OnTriggerStay2D(Collider2D collision) {
+    Debug.Log ("stay");
     if (collision.gameObject.tag == "cut_area" && Input.GetKeyDown (KeyCode.Space)) {
-      Debug.Log ("stay");
       cut_menu.SetActive(true);
       //Time.timeScale = 0f;
     }

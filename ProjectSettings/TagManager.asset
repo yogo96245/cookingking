@@ -12,8 +12,8 @@ TagManager:
   - 
   - Water
   - UI
-  - backGround
-  - gameObject
+  - popup window
+  - character
   - 
   - 
   - 
@@ -41,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3319692323
+    locked: 0
+  - name: cursor
+    uniqueID: 946573057
+    locked: 0
+  - name: character
+    uniqueID: 3197141559
     locked: 0

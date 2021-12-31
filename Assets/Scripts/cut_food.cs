@@ -5,26 +5,24 @@ using UnityEngine.UI;
 
 public class cut_food : MonoBehaviour {
   public GameObject food;
+  public GameObject[] lines_group;
   private bool is_sleep = false;
   private Vector2 mouse_position;
-  private int flag=0,begin_position=0,end_position=0;
-  public GameObject[] lines_group;
+  private int flag = 0, begin_position = 0, end_position = 0;
+
 
   // Start is called before the first frame update
   void Start() {
-   
   }
 
   // Update is called once per frame
 
   /*-----------------------------------------------------------------------------------------------*/
   void Update() {
-
-
     mouse_click();
     line_color_change();
 
-    if (lines_group[0].activeSelf && lines_group[1].activeSelf && lines_group[2].activeSelf && lines_group[3].activeSelf) {
+    if (!lines_group[0].activeSelf && !lines_group[1].activeSelf && !lines_group[2].activeSelf && !lines_group[3].activeSelf) {
       food.GetComponent<Image>().sprite =  Resources.Load <Sprite>("cut_after");
       if (!is_sleep) {
         StartCoroutine (complete());
@@ -36,12 +34,9 @@ public class cut_food : MonoBehaviour {
 
   IEnumerator complete() {
     is_sleep = true;
-    for(int i=0;i<lines_group.Length;i++){
-      lines_group[i].SetActive(false);
-    }
     yield return new WaitForSeconds(3);
+    set_default();
     this.gameObject.SetActive (false);
-    is_sleep = false;
   }
 
   /*-----------------------------------------------------------------------------------------------*/
@@ -55,8 +50,8 @@ public class cut_food : MonoBehaviour {
         case 3 : begin_position = cursor_ch(-19.9f,0.0f);break;
       }
 
-      Debug.Log("pos is : " + mouse_position.x + "  " + mouse_position.y);
-      Debug.Log("b is : " + begin_position);
+//      Debug.Log("pos is : " + mouse_position.x + "  " + mouse_position.y);
+//      Debug.Log("b is : " + begin_position);
     }
 
     if (Input.GetMouseButtonUp(0)){
@@ -67,17 +62,18 @@ public class cut_food : MonoBehaviour {
         case 3 : end_position = cursor_ch(-6.67f,0.0f);break;
       }
 
-      Debug.Log("pos is : " + mouse_position.x + "  " + mouse_position.y);
-      Debug.Log("e is : " + end_position);
-    }
+//      Debug.Log("pos is : " + mouse_position.x + "  " + mouse_position.y);
+//      Debug.Log("e is : " + end_position);
 
-    if(begin_position + end_position == 2) {
-      lines_group[flag++].SetActive(false);
-      lines_group[flag].SetActive(true);
+      if(begin_position + end_position == 2) {
+        lines_group[flag++].SetActive(false);
+        if (flag < 4) {
+          lines_group[flag].SetActive(true);
+        }
+      }
       begin_position=0;
       end_position=0;
     }
-
   }
 
   /*-----------------------------------------------------------------------------------------------*/
@@ -91,6 +87,17 @@ public class cut_food : MonoBehaviour {
 
   private int cursor_ch(float x , float y){
     mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    return ((Mathf.Abs(mouse_position.x - x)<0.3)&&(Mathf.Abs(mouse_position.y-y)<0.3))?1:0;
+    return ((Mathf.Abs(mouse_position.x - x)<0.4f)&&(Mathf.Abs(mouse_position.y-y)<0.4f))?1:0;
+  }
+
+  /*-----------------------------------------------------------------------------------------------*/
+  private void set_default() {
+    is_sleep = false;
+    Cursor.visible = true;
+    GameObject.Find ("knife").transform.position = new Vector2(0, 0);
+    food.GetComponent<Image>().sprite = Resources.Load <Sprite>("cut_before");
+    lines_group[0].SetActive (true);
+    flag = 0;
   }
 }
+

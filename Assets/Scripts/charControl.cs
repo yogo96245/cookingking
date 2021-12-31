@@ -19,30 +19,29 @@ public class charControl : MonoBehaviour {
 
   // Update is called once per frame
   void Update() {
-      float horizontal_move = Input.GetAxis("Horizontal");
-      float vertical_move = Input.GetAxis("Vertical");
-      my_animator.SetFloat("vertical_speed", vertical_move);
-      my_animator.SetFloat("horizontal_speed", Mathf.Abs(horizontal_move));
-      transform.position = new Vector2 (transform.position.x + horizontal_move * speed_scale * Time.deltaTime, 
+    float horizontal_move = Input.GetAxis("Horizontal");
+    float vertical_move = Input.GetAxis("Vertical");
+    my_animator.SetFloat("vertical_speed", vertical_move);
+    my_animator.SetFloat("horizontal_speed", Mathf.Abs(horizontal_move));
+    transform.position = new Vector2 (transform.position.x + horizontal_move * speed_scale * Time.deltaTime, 
                                         transform.position.y + vertical_move   * speed_scale * Time.deltaTime);
-      // turn right
-      if (horizontal_move > 0 && facing_right != true) {        
-        Flip();
-      }
-      // turn left
-      else if (horizontal_move < 0 && facing_right == true) {
-        Flip();
-      }
-      if (Input.GetKeyDown (KeyCode.W)) {
-        change_character_direction (turn_forward);
-      }
-      if (Input.GetKeyDown (KeyCode.S)) {
-        change_character_direction (turn_back);
-      }
-      if (Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.A)) {
-        change_character_direction (turn_right);
-      }
-      
+    // turn right
+    if (horizontal_move > 0 && facing_right != true) {        
+      Flip();
+    }
+    // turn left
+    else if (horizontal_move < 0 && facing_right == true) {
+      Flip();
+    }
+    if (Input.GetKeyDown (KeyCode.W)) {
+      change_character_direction (turn_forward);
+    }
+    if (Input.GetKeyDown (KeyCode.S)) {
+      change_character_direction (turn_back);
+    }
+    if (Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.A)) {
+      change_character_direction (turn_right);
+    }
   }
 
   void Flip() {
