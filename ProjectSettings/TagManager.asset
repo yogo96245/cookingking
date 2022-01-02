@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - cut_area
+  - fry_area
   layers:
   - Default
   - TransparentFX

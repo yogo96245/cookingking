@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class chef_collision : MonoBehaviour {
   public  GameObject cut_menu;
+  public GameObject fry_menu;
 
   // Start is called before the first frame update
   void Start() {
@@ -15,7 +16,6 @@ public class chef_collision : MonoBehaviour {
     
   }
   void OnTriggerEnter2D(Collider2D collision) {
-    Debug.Log ("enter");
     if (collision.gameObject.tag == "cut_area" && Input.GetKeyDown (KeyCode.Space)) {
       cut_menu.SetActive(true);
     }
@@ -24,6 +24,10 @@ public class chef_collision : MonoBehaviour {
     Debug.Log ("stay");
     if (collision.gameObject.tag == "cut_area" && Input.GetKeyDown (KeyCode.Space)) {
       cut_menu.SetActive(true);
+      //Time.timeScale = 0f;
+    }
+    if (collision.gameObject.tag == "fry_area" && Input.GetKeyDown (KeyCode.Space)) {
+      fry_menu.SetActive(true);
       //Time.timeScale = 0f;
     }
   }
