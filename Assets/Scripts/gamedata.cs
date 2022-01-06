@@ -5,13 +5,14 @@ using UnityEngine;
 public class gamedata : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static bool cut_tofu_done = false;
-    public static bool fry_tofu_done = false;
-    public static int sell_sum = 0;
+    public static bool cut_tofu_done;
+    public static bool fry_tofu_done;
+    public static int sell_sum;
     void Start()
     {
        cut_tofu_done = false;
        fry_tofu_done = false;
+       sell_sum = 0;
     }
 
     // Update is called once per frame

@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour {
             else {
                 timeRemaining = 0;
                 timerIsRunning = false;
-                Time.timeScale = 0f;
+                //Time.timeScale = 0f;
             }
         }
         else {
