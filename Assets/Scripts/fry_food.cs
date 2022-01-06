@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class fry_food : MonoBehaviour {
-
-  public GameObject[] tofu; 
+  public GameObject[] tofu;
+  public GameObject done_tofu;
   private float[,] four_direction;
   private int[] tofu_direction;
   private float[] tofu_frytime;
@@ -20,28 +20,25 @@ public class fry_food : MonoBehaviour {
     for (int i = 0; i < tofu.Length; i++) {
       initialize(i);
     }
-    
   }
 
   // Update is called once per frame
   void Update() {
     fry_time();
-    if (!is_sleep) {
-      StartCoroutine (tofu_move());
-    }
     if (complete_amount == 6) {
       set_default();
+      gamedata.fry_tofu_done = true;
       this.gameObject.SetActive (false);
-      print ("complete");
+      done_tofu.SetActive (true);
     }
   }
 
   private void initialize(int i) {
     tofu_direction[i] = Random.Range (0, 4);
     tofu_frytime[i] = Random.Range (0.0f, 5.0f);
-    tofu[i].GetComponent<Image>().sprite = Resources.Load <Sprite>("cut_before");
+    tofu[i].GetComponent<Image>().sprite = Resources.Load <Sprite>("fry_before");
     // x: 550 y: 300
-    tofu[i].transform.localPosition = new Vector2 (Random.Range (-300, 300), Random.Range (-200, 200));
+    //tofu[i].transform.localPosition = new Vector2 (Random.Range (-300, 300), Random.Range (-200, 200));
   }
 
   IEnumerator tofu_move() {
@@ -86,5 +83,10 @@ public class fry_food : MonoBehaviour {
       tofu[tofu_number].GetComponent<Image>().sprite = Resources.Load <Sprite>("cut_before");
       initialize (tofu_number);
     }
+  }
+
+  public void close() {
+    set_default();
+    this.gameObject.SetActive (false);
   }
 }

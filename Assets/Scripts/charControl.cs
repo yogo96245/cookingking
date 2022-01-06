@@ -24,7 +24,7 @@ public class charControl : MonoBehaviour {
     my_animator.SetFloat("vertical_speed", vertical_move);
     my_animator.SetFloat("horizontal_speed", Mathf.Abs(horizontal_move));
     transform.position = new Vector2 (transform.position.x + horizontal_move * speed_scale * Time.deltaTime, 
-                                        transform.position.y + vertical_move   * speed_scale * Time.deltaTime);
+                                      transform.position.y + vertical_move   * speed_scale * Time.deltaTime);
     // turn right
     if (horizontal_move > 0 && facing_right != true) {        
       Flip();
@@ -54,16 +54,21 @@ public class charControl : MonoBehaviour {
     float x_error = 0.0f;
     float y_error = 0.0f;
     direction.transform.position = this.transform.position;
+    // 向上or下 轉向右
     if (this.gameObject.name != "chef_side" && direction == turn_right) {
+      //由下轉右
       if (this.gameObject.name == "chef_back") {
         y_error = -1.3f;
       }
+      // 由上轉右
       else {
         y_error = -0.9f;
       }
     }
+    // 側邊轉左
     if (this.gameObject.name == "chef_side" && direction != turn_right) {
       y_error = 1.3f;
+      // 側轉上
       if (direction == turn_forward) {
         if (transform.localScale.x < 0) {
           x_error = -0.5f;

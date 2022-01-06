@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class cut_food : MonoBehaviour {
   public GameObject food;
   public GameObject[] lines_group;
+  public GameObject plate;
   private bool is_sleep = false;
+  private bool cut_tofu_done;
   private Vector2 mouse_position;
   private int flag = 0, begin_position = 0, end_position = 0;
 
@@ -34,9 +36,11 @@ public class cut_food : MonoBehaviour {
 
   IEnumerator complete() {
     is_sleep = true;
+    gamedata.cut_tofu_done = true;
     yield return new WaitForSeconds(3);
     set_default();
     this.gameObject.SetActive (false);
+    plate.SetActive (true);
   }
 
   /*-----------------------------------------------------------------------------------------------*/
@@ -96,8 +100,16 @@ public class cut_food : MonoBehaviour {
     Cursor.visible = true;
     GameObject.Find ("knife").transform.position = new Vector2(0, 0);
     food.GetComponent<Image>().sprite = Resources.Load <Sprite>("cut_before");
+    for (int i = 1; i <=3; i++) {
+      lines_group[i].SetActive (false);  
+    }
     lines_group[0].SetActive (true);
     flag = 0;
+  }
+  /*-----------------------------------------------------------------------------------------------*/
+  public void close() {
+    set_default();
+    this.gameObject.SetActive (false);
   }
 }
 

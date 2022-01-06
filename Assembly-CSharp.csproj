@@ -41,6 +41,12 @@
      <Compile Include="Assets\Scripts\charControl.cs" />
      <Compile Include="Assets\Scripts\cut_food.cs" />
      <Compile Include="Assets\Scripts\fry_food.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\gamedata.cs" />
+     <Compile Include="Assets\Scripts\plate_pos.cs" />
+     <Compile Include="Assets\Scripts\end_form.cs" />
+     <Compile Include="Assets\Scripts\start_exit.cs" />
+     <Compile Include="Assets\Scripts\again_back.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.22f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
